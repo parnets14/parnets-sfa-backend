@@ -50,6 +50,33 @@ const productSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  // Product Specifications
+  specifications: {
+    modelNumber: { type: String, trim: true },
+    color: { type: String, trim: true },
+    weight: { type: String, trim: true },
+    dimensions: { type: String, trim: true },
+    capacity: { type: String, trim: true },
+    power: { type: String, trim: true },
+    voltage: { type: String, trim: true },
+    warranty: { type: String, trim: true },
+    energyRating: { type: String, trim: true },
+    material: { type: String, trim: true },
+    features: { type: String, trim: true },
+    // Additional details
+    type: { type: String, trim: true },
+    compressorType: { type: String, trim: true },
+    refrigerant: { type: String, trim: true },
+    noiseLevel: { type: String, trim: true },
+    speed: { type: String, trim: true },
+    coolingCapacity: { type: String, trim: true },
+    tankCapacity: { type: String, trim: true },
+    installationType: { type: String, trim: true },
+    frequency: { type: String, trim: true },
+    countryOfOrigin: { type: String, trim: true },
+    certification: { type: String, trim: true },
+    inTheBox: { type: String, trim: true }
+  },
   status: {
     type: String,
     enum: ['active', 'inactive'],

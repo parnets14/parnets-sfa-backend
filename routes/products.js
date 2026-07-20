@@ -46,7 +46,10 @@ router.get('/:id', async (req, res) => {
 // Create product
 router.post('/', upload.single('image'), async (req, res) => {
   try {
-    const { productName, category, brand, sku, unit, mrp, billingPrice, stock, description } = req.body;
+    const { productName, category, brand, sku, unit, mrp, billingPrice, stock, description,
+      modelNumber, color, weight, dimensions, capacity, power, voltage, warranty, energyRating, material, features,
+      type, compressorType, refrigerant, noiseLevel, speed, coolingCapacity, tankCapacity, installationType, frequency, countryOfOrigin, certification, inTheBox
+    } = req.body;
 
     if (!req.file) {
       return res.status(400).json({ message: 'Product image is required' });
@@ -62,7 +65,32 @@ router.post('/', upload.single('image'), async (req, res) => {
       mrp: parseFloat(mrp),
       billingPrice: parseFloat(billingPrice),
       stock: stock ? parseInt(stock) : 0,
-      description: description || ''
+      description: description || '',
+      specifications: {
+        modelNumber: modelNumber || '',
+        color: color || '',
+        weight: weight || '',
+        dimensions: dimensions || '',
+        capacity: capacity || '',
+        power: power || '',
+        voltage: voltage || '',
+        warranty: warranty || '',
+        energyRating: energyRating || '',
+        material: material || '',
+        features: features || '',
+        type: type || '',
+        compressorType: compressorType || '',
+        refrigerant: refrigerant || '',
+        noiseLevel: noiseLevel || '',
+        speed: speed || '',
+        coolingCapacity: coolingCapacity || '',
+        tankCapacity: tankCapacity || '',
+        installationType: installationType || '',
+        frequency: frequency || '',
+        countryOfOrigin: countryOfOrigin || '',
+        certification: certification || '',
+        inTheBox: inTheBox || ''
+      }
     });
 
     await product.save();
@@ -75,7 +103,10 @@ router.post('/', upload.single('image'), async (req, res) => {
 // Update product
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
-    const { productName, category, brand, sku, unit, mrp, billingPrice, stock, description, status } = req.body;
+    const { productName, category, brand, sku, unit, mrp, billingPrice, stock, description, status,
+      modelNumber, color, weight, dimensions, capacity, power, voltage, warranty, energyRating, material, features,
+      type, compressorType, refrigerant, noiseLevel, speed, coolingCapacity, tankCapacity, installationType, frequency, countryOfOrigin, certification, inTheBox
+    } = req.body;
 
     const updateData = {
       productName,
@@ -87,7 +118,32 @@ router.put('/:id', upload.single('image'), async (req, res) => {
       billingPrice: parseFloat(billingPrice),
       stock: stock ? parseInt(stock) : 0,
       description: description || '',
-      status
+      status,
+      specifications: {
+        modelNumber: modelNumber || '',
+        color: color || '',
+        weight: weight || '',
+        dimensions: dimensions || '',
+        capacity: capacity || '',
+        power: power || '',
+        voltage: voltage || '',
+        warranty: warranty || '',
+        energyRating: energyRating || '',
+        material: material || '',
+        features: features || '',
+        type: type || '',
+        compressorType: compressorType || '',
+        refrigerant: refrigerant || '',
+        noiseLevel: noiseLevel || '',
+        speed: speed || '',
+        coolingCapacity: coolingCapacity || '',
+        tankCapacity: tankCapacity || '',
+        installationType: installationType || '',
+        frequency: frequency || '',
+        countryOfOrigin: countryOfOrigin || '',
+        certification: certification || '',
+        inTheBox: inTheBox || ''
+      }
     };
 
     if (req.file) {
