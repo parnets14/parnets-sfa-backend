@@ -51,13 +51,9 @@ router.post('/', upload.single('image'), async (req, res) => {
       type, compressorType, refrigerant, noiseLevel, speed, coolingCapacity, tankCapacity, installationType, frequency, countryOfOrigin, certification, inTheBox
     } = req.body;
 
-    if (!req.file) {
-      return res.status(400).json({ message: 'Product image is required' });
-    }
-
     const product = new Product({
       productName,
-      image: `/uploads/${req.file.filename}`,
+      image: req.file ? `/uploads/${req.file.filename}` : '',
       category: category || '',
       brand: brand || '',
       sku: sku || '',
